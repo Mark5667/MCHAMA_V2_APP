@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Loan - GMAX CHAMA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">GMAX-HIGH CLASS CHAMA APP</div>
+
+<div class="container">
+    <h2>Request a Loan</h2>
+
+    <form method="POST">
+        <label for="member_id">Member ID:</label>
+        <input type="text" id="member_id" name="member_id" placeholder="Enter your Member ID" required>
+
+        <label for="amount">Loan Amount:</label>
+        <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+
+        <label for="purpose">Loan Purpose:</label>
+        <input type="text" id="purpose" name="purpose" placeholder="e.g. Business, Emergency" required>
+
+        <label for="date">Request Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <button type="submit">Submit Loan Request</button>
+    </form>
+</div>
+
+<div class="footer">Powered by Mark</div>
+
+</body>
+</html>

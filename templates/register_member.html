@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Member - GMAX CHAMA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">GMAX-HIGH CLASS CHAMA APP</div>
+
+<div class="container">
+    <h2>Register New Member</h2>
+
+    <form method="POST">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter full name" required>
+
+        <label for="id_number">ID Number:</label>
+        <input type="text" id="id_number" name="id_number" placeholder="Enter ID number" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="registration_date">Registration Date:</label>
+        <input type="date" id="registration_date" name="registration_date" required>
+
+        <button type="submit">Register Member</button>
+    </form>
+</div>
+
+<div class="footer">Powered by Mark</div>
+
+</body>
+</html>

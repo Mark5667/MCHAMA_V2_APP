@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Contributions - GMAX CHAMA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">GMAX-HIGH CLASS CHAMA APP</div>
+
+<div class="container">
+    <h2>All Contributions</h2>
+
+    {% if contributions %}
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr style="background-color: #f1f5f9;">
+                    <th style="padding: 10px; border: 1px solid #ccc;">ID</th>
+                    <th style="padding: 10px; border: 1px solid #ccc;">Member ID</th>
+                    <th style="padding: 10px; border: 1px solid #ccc;">Amount</th>
+                    <th style="padding: 10px; border: 1px solid #ccc;">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in contributions %}
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ccc;">{{ c.id }}</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">{{ c.member_id }}</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">Ksh {{ c.amount }}</td>
+                        <td style="padding: 10px; border: 1px solid #ccc;">{{ c.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No contributions recorded yet.</p>
+    {% endif %}
+</div>
+
+<div class="footer">Powered by Mark</div>
+
+</body>
+</html>

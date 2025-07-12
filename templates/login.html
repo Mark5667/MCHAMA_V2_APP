@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - GMAX CHAMA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">GMAX-HIGH CLASS CHAMA APP</div>
+
+<div class="container">
+    <h2>Member/Admin Login</h2>
+
+    <form method="POST">
+        <label for="mobile_number">Mobile Number:</label>
+        <input type="text" id="mobile_number" name="mobile_number" placeholder="Enter mobile number" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<div class="footer">Powered by Mark</div>
+
+</body>
+</html>

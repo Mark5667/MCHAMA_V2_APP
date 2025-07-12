@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome - GMAX CHAMA</title>
+    <meta http-equiv="refresh" content="3;url=/login">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .splash-box {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .splash-box h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        .splash-box p {
+            font-size: 16px;
+            color: #cbd5e1;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="splash-box">
+    <h1>WELCOME TO GMAX-HIGH CLASS CHAMA APP</h1>
+    <p>Loading... please wait</p>
+</div>
+
+</body>
+</html>

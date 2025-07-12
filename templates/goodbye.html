@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goodbye - GMAX CHAMA</title>
+    <meta http-equiv="refresh" content="3;url=/login">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .goodbye-box {
+            max-width: 500px;
+            margin: 150px auto;
+            text-align: center;
+            background-color: #0f172a;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            animation: fadeOut 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .goodbye-text {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .redirect-note {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="goodbye-box">
+    <div class="goodbye-text">👋 Goodbye, see you soon!</div>
+    <div class="redirect-note">Redirecting to login...</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - GMAX CHAMA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">GMAX-HIGH CLASS CHAMA APP</div>
+
+<div class="container">
+    <h2>Welcome to Your Dashboard</h2>
+    <ul style="list-style: none; padding: 0;">
+        <li><a href="/register_member">Register New Member</a></li>
+        <li><a href="/members">View All Members</a></li>
+        <li><a href="/add_contribution">Add Contribution</a></li>
+        <li><a href="/request_loan">Request Loan</a></li>
+        <li><a href="/loans">View All Loans</a></li>
+        <li><a href="/summary">Summary Report</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</div>
+
+<div class="footer">Powered by Mark</div>
+
+</body>
+</html>

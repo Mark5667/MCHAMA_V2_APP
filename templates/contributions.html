@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Contribution</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">GMAX CHAMA - Add New Contribution</div>
+
+<div class="container">
+    <h2>Add Contribution</h2>
+
+    <form method="POST">
+        <label for="member_id">Member:</label><br>
+        <select name="member_id" required>
+            {% for member in members %}
+                <option value="{{ member.id }}">{{ member.name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="amount">Amount (KES):</label><br>
+        <input type="number" step="0.01" name="amount" required><br><br>
+
+        <label for="date">Date:</label><br>
+        <input type="text" name="date" placeholder="dd/mm/yyyy" required><br><br>
+
+        <input type="submit" value="Add Contribution" class="button">
+    </form>
+
+    <br>
+    <a href="/dashboard" class="button">← Back to Dashboard</a>
+</div>
+
+<div class="footer">Powered by Mark</div>
+
+</body>
+</html>

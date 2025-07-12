@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">GMAX CHAMA - Summary Report</div>
+
+<div class="container">
+    <h2>Group Financial Summary</h2>
+    <ul>
+        <li><strong>Total Members:</strong> {{ total_members }}</li>
+        <li><strong>Total Contributions:</strong> KES {{ total_contributions }}</li>
+        <li><strong>Total Loan Amount:</strong> KES {{ total_loans }}</li>
+    </ul>
+
+    <a href="/dashboard" class="button">Back to Dashboard</a>
+</div>
+
+<div class="footer">Powered by Mark</div>
+
+</body>
+</html>
