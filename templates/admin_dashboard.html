@@ -5,111 +5,88 @@
     <link rel="stylesheet" href="/static/styles.css">
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            background: #f1f1f1;
             margin: 0;
             padding: 0;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            background: white;
-            border-radius: 10px;
+        .dashboard {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
             padding: 30px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
-
-        h2 {
-            color: #333;
+        h1 {
             text-align: center;
+            color: #2c3e50;
         }
-
-        .summary {
+        .stats {
             display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            text-align: center;
+            justify-content: space-around;
+            margin-bottom: 30px;
         }
-
-        .summary div {
-            flex: 1;
-            background: #f0f8ff;
+        .card {
+            background: #e8f0fe;
             padding: 20px;
-            margin: 5px;
-            border-radius: 8px;
-            font-size: 18px;
-            color: #333;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            margin: 0 10px;
         }
-
-        .actions {
-            margin-top: 40px;
+        .card h3 {
+            margin: 0;
+            color: #2c3e50;
+        }
+        .menu {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
         }
-
-        .actions a {
+        .menu a {
             flex: 0 0 48%;
-            background-color: #007bff;
+            background: #3498db;
             color: white;
-            text-align: center;
             padding: 15px;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            transition: background-color 0.2s ease;
-        }
-
-        .actions a:hover {
-            background-color: #0056b3;
-        }
-
-        .logout {
-            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
             text-align: center;
-        }
-
-        .logout a {
-            color: #dc3545;
             text-decoration: none;
-            font-weight: bold;
+            transition: 0.3s;
         }
-
-        .logout a:hover {
-            text-decoration: underline;
+        .menu a:hover {
+            background: #2980b9;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>👑 Admin Dashboard</h2>
+    <div class="dashboard">
+        <h1>👑 Admin Dashboard</h1>
+        <p style="text-align: center;">Welcome, <strong>admin</strong></p>
 
-        <div class="summary">
-            <div>
-                <strong>Total Members</strong><br>
-                {{ member_count }}
+        <div class="stats">
+            <div class="card">
+                <h3>Total Members</h3>
+                <p>{{ member_count }}</p>
             </div>
-            <div>
-                <strong>Total Contributions</strong><br>
-                Ksh {{ total_contributions }}
+            <div class="card">
+                <h3>Total Contributions</h3>
+                <p>Ksh {{ total_contributions }}</p>
             </div>
-            <div>
-                <strong>Pending Loans</strong><br>
-                {{ pending_loans }}
+            <div class="card">
+                <h3>Pending Loans</h3>
+                <p>{{ pending_loans }}</p>
             </div>
         </div>
 
-        <div class="actions">
+        <div class="menu">
             <a href="/register_member">➕ Register Member</a>
             <a href="/members">📋 View Members</a>
             <a href="/add_contribution">💰 Add Contribution</a>
             <a href="/request_loan">📝 Loan Request</a>
             <a href="/approve-loans">✅ Approve Loans</a>
             <a href="/summary">📊 Summary</a>
-        </div>
-
-        <div class="logout">
             <a href="/logout">🚪 Logout</a>
         </div>
     </div>
