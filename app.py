@@ -255,10 +255,23 @@ def member_dashboard():
 
 
 # Add your other routes (register_member, members list, contributions, etc.) here.
+@app.route('/debug-loans')
+def debug_loans():
+    loans = Loan.query.all()
+    result = ""
+    for loan in loans:
+        result += f"Loan ID: {loan.id}, Member ID: {loan.member_id}, Amount: {loan.amount}, Status: {loan.status}<br>"
+    return result
+@app.route('/fix-loans')
+def fix_loans():
+    loans = Loan.query.filter_by(status='pending').all()
+    for loan in loans:
+        loan.status = 'Pending'
+    db.session.commit()
+    return "✅ Fixed all lowercase statuses."
 
 if __name__ == '__main__':
-  import os
-port = int(os.environ.get("PORT", 5000))
-app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
+
 
 
