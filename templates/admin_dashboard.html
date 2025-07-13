@@ -1,26 +1,117 @@
-<!-- templates/admin_dashboard.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Dashboard - MCHAMA APP</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .summary {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .summary div {
+            flex: 1;
+            background: #f0f8ff;
+            padding: 20px;
+            margin: 5px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .actions {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .actions a {
+            flex: 0 0 48%;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+
+        .logout {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .logout a {
+            color: #dc3545;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>👑 Admin Dashboard</h1>
-    <p>Welcome, {{ session['user'] }}</p>
+    <div class="container">
+        <h2>👑 Admin Dashboard</h2>
 
-    <ul>
-        <li>Total Members: {{ member_count }}</li>
-        <li>Total Contributions: Ksh {{ total_contributions }}</li>
-        <li>Pending Loans: {{ pending_loans }}</li>
-    </ul>
+        <div class="summary">
+            <div>
+                <strong>Total Members</strong><br>
+                {{ member_count }}
+            </div>
+            <div>
+                <strong>Total Contributions</strong><br>
+                Ksh {{ total_contributions }}
+            </div>
+            <div>
+                <strong>Pending Loans</strong><br>
+                {{ pending_loans }}
+            </div>
+        </div>
 
-    <a href="/register_member">➕ Register Member</a><br>
-    <a href="/members">📋 View Members</a><br>
-    <a href="/add_contribution">💰 Add Contribution</a><br>
-    <a href="/request_loan">📝 Loan Request</a><br>
-    <a href="/approve-loans">✅ Approve Loans</a><br>
-    <a href="/summary">📊 Summary</a><br>
-    <a href="/logout">🚪 Logout</a>
+        <div class="actions">
+            <a href="/register_member">➕ Register Member</a>
+            <a href="/members">📋 View Members</a>
+            <a href="/add_contribution">💰 Add Contribution</a>
+            <a href="/request_loan">📝 Loan Request</a>
+            <a href="/approve-loans">✅ Approve Loans</a>
+            <a href="/summary">📊 Summary</a>
+        </div>
+
+        <div class="logout">
+            <a href="/logout">🚪 Logout</a>
+        </div>
+    </div>
 </body>
 </html>
