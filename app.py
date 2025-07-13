@@ -221,8 +221,9 @@ def view_loans():
     if 'user' not in session:
         return redirect('/login')
 
-    loans = db.session.query(Loan.id, Loan.amount, Loan.status, Member.name).join(Member, Loan.member_id == Member.id).all()
+    loans = Loan.query.join(Member).add_columns(Loan.amount, Loan.status, Member.name).all()
     return render_template('loans.html', loans=loans)
+
 @app.route('/admin/dashboard')
 def admin_dashboard():
     if 'user' not in session or session['role'] != 'admin':

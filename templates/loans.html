@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>All Loans</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>All Loan Requests</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-
-<div class="header">GMAX CHAMA - Loan Records</div>
-
-<div class="container">
     <h2>All Loan Requests</h2>
-    <table border="1" cellpadding="8">
+    <table border="1">
         <tr>
             <th>Member</th>
             <th>Amount</th>
@@ -19,17 +14,13 @@
         </tr>
         {% for loan in loans %}
         <tr>
-            <td>{{ loan.name }}</td>
-            <td>{{ loan.amount }}</td>
-            <td>{{ loan.status }}</td>
+            <td>{{ loan[3] }}</td>  <!-- Member name -->
+            <td>{{ loan[1] }}</td>  <!-- Amount -->
+            <td>{{ loan[2] }}</td>  <!-- Status -->
         </tr>
         {% endfor %}
     </table>
-
-    <a href="/dashboard" class="button">Back to Dashboard</a>
-</div>
-
-<div class="footer">Powered by Mark</div>
-
+    <br>
+    <a href="/dashboard">⬅ Back to Dashboard</a>
 </body>
 </html>
