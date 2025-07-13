@@ -14,9 +14,9 @@
         </tr>
         {% for loan in loans %}
         <tr>
-            <td>{{ loan[3] }}</td>  <!-- Member name -->
-            <td>{{ loan[1] }}</td>  <!-- Amount -->
-            <td>{{ loan[2] }}</td>  <!-- Status -->
+            <td>{{ loan.member_name }}</td>
+            <td>{{ loan.amount }}</td>
+            <td>{{ loan.status }}</td>
         </tr>
         {% endfor %}
     </table>

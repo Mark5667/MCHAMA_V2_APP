@@ -221,8 +221,15 @@ def view_loans():
     if 'user' not in session:
         return redirect('/login')
 
-    loans = Loan.query.join(Member).add_columns(Loan.amount, Loan.status, Member.name).all()
+    # Join Loan with Member to get member name
+    loans = db.session.query(
+        Loan.amount,
+        Loan.status,
+        Member.name.label('member_name')
+    ).join(Member, Loan.member_id == Member.id).all()
+
     return render_template('loans.html', loans=loans)
+
 
 @app.route('/admin/dashboard')
 def admin_dashboard():
