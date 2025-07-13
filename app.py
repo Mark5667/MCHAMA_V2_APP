@@ -71,14 +71,26 @@ def splash():
 def login():
     error = ''
     if request.method == 'POST':
-        user = User.query.filter_by(mobile_number=request.form['mobile_number']).first()
-        if user and bcrypt.check_password_hash(user.password, request.form['password']):
+        mobile = request.form['mobile_number']
+        password = request.form['password']
+
+        user = User.query.filter_by(mobile_number=mobile).first()
+
+        if user and bcrypt.check_password_hash(user.password, password):
             session['user'] = user.username
             session['role'] = user.role
-            return redirect('/dashboard')
+
+            if user.role == 'admin':
+                return redirect('/admin/dashboard')
+            elif user.role == 'member':
+                return redirect('/member/dashboard')
+            else:
+                error = 'Unknown role. Contact support.'
         else:
             error = 'Invalid mobile number or password'
+
     return render_template('login.html', error=error)
+
 
 @app.route('/dashboard')
 def dashboard():
@@ -93,6 +105,7 @@ def register_member():
     if 'user' not in session or session['role'] != 'admin':
         return redirect('/login')
 
+    error = ''
     if request.method == 'POST':
         name = request.form['name']
         id_number = request.form['id_number']
@@ -100,12 +113,29 @@ def register_member():
         age = request.form['age']
         registration_date = request.form['registration_date']
 
-        member = Member(name=name, id_number=id_number, dob=dob, age=age, registration_date=registration_date)
-        db.session.add(member)
-        db.session.commit()
-        return redirect('/members')
+        # ✅ Check if the member already exists
+        existing = Member.query.filter_by(id_number=id_number).first()
+        if existing:
+            error = f"⚠️ Member with ID number {id_number} already exists."
+        else:
+            try:
+                member = Member(
+                    name=name,
+                    id_number=id_number,
+                    dob=dob,
+                    age=age,
+                    registration_date=registration_date
+                )
+                db.session.add(member)
+                db.session.commit()
+                return redirect('/members')
+            except Exception as e:
+                db.session.rollback()
+                error = "⚠️ Failed to register member. Please try again."
 
-    return render_template('register_member.html')
+    return render_template('register_member.html', error=error)
+
+
 
 @app.route('/members')
 def view_members():
@@ -193,6 +223,27 @@ def view_loans():
 
     loans = db.session.query(Loan.id, Loan.amount, Loan.status, Member.name).join(Member, Loan.member_id == Member.id).all()
     return render_template('loans.html', loans=loans)
+@app.route('/admin/dashboard')
+def admin_dashboard():
+    if 'user' not in session or session['role'] != 'admin':
+        return redirect('/login')
+
+    member_count = Member.query.count()
+    total_contributions = db.session.query(db.func.sum(Contribution.amount)).scalar() or 0
+    pending_loans = Loan.query.filter_by(status='pending').count()
+
+    return render_template('admin_dashboard.html',
+                           member_count=member_count,
+                           total_contributions=total_contributions,
+                           pending_loans=pending_loans)
+
+@app.route('/member/dashboard')
+def member_dashboard():
+    if 'user' not in session or session['role'] != 'member':
+        return redirect('/login')
+
+    # You can customize this more if you want member-specific data
+    return render_template('member_dashboard.html', user=session['user'])
 
 
 # Add your other routes (register_member, members list, contributions, etc.) here.

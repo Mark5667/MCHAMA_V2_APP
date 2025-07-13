@@ -6,6 +6,11 @@
 </head>
 <body>
     <h2>Register New Member</h2>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
     <form method="POST">
         <label for="name">Full Name:</label><br>
         <input type="text" name="name" required><br><br>
@@ -24,6 +29,7 @@
 
         <input type="submit" value="Register">
     </form>
+
     <br>
     <a href="/dashboard">⬅ Back to Dashboard</a>
 </body>

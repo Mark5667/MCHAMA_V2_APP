@@ -1,0 +1,17 @@
+<!-- templates/member_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Dashboard - MCHAMA APP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🙋 Member Dashboard</h1>
+    <p>Welcome, {{ user }}</p>
+
+    <a href="/request_loan">📝 Request Loan</a><br>
+    <a href="/contributions">📄 View Contributions</a><br>
+    <a href="/summary">📊 Summary</a><br>
+    <a href="/logout">🚪 Logout</a>
+</body>
+</html>

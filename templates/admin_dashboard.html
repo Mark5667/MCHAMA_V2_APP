@@ -1,0 +1,26 @@
+<!-- templates/admin_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - MCHAMA APP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>👑 Admin Dashboard</h1>
+    <p>Welcome, {{ session['user'] }}</p>
+
+    <ul>
+        <li>Total Members: {{ member_count }}</li>
+        <li>Total Contributions: Ksh {{ total_contributions }}</li>
+        <li>Pending Loans: {{ pending_loans }}</li>
+    </ul>
+
+    <a href="/register_member">➕ Register Member</a><br>
+    <a href="/members">📋 View Members</a><br>
+    <a href="/add_contribution">💰 Add Contribution</a><br>
+    <a href="/request_loan">📝 Loan Request</a><br>
+    <a href="/approve-loans">✅ Approve Loans</a><br>
+    <a href="/summary">📊 Summary</a><br>
+    <a href="/logout">🚪 Logout</a>
+</body>
+</html>
