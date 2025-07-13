@@ -250,4 +250,8 @@ def member_dashboard():
 # Add your other routes (register_member, members list, contributions, etc.) here.
 
 if __name__ == '__main__':
-    app.run(debug=True)
+  import os
+port = int(os.environ.get("PORT", 5000))
+app.run(host='0.0.0.0', port=port)
+
+
